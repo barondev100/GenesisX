@@ -1,6 +1,6 @@
 import logging
-from core_engine.ai_utils import AIUtils
-from core_engine.ai_ast_parser import AIASTParser  # Import AST parser
+from core_engine.modification.ai_utils import AIUtils
+from core_engine.modification.ai_ast_parser import AIASTParser  # Import AST parser
 
 class AIAnalyzer:
     """Analyzes AI's source code for inefficiencies."""

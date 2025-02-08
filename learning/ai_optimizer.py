@@ -1,5 +1,5 @@
 import logging
-from core_engine.ai_modifier import AIModifier
+from core_engine.modification.ai_modifier import AIModifier
 
 class AIOPTimizer:
     """Forces AI functions to be modified without mercy."""

@@ -1,6 +1,6 @@
 import ast
 import logging
-from core_engine.ai_utils import AIUtils
+from core_engine.modification.ai_utils import AIUtils
 
 class AIASTParser:
     """Parses and analyzes the AI's own source code using Abstract Syntax Trees (ASTs)."""

@@ -1,5 +1,5 @@
 import logging
-from core_engine.ai_utils import AIUtils  # Use centralized file handling
+from core_engine.modification.ai_utils import AIUtils  # Use centralized file handling
 
 class AIReader:
     """Handles reading and displaying AI's source code."""
