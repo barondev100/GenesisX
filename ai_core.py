@@ -9,6 +9,7 @@ from core_engine.execution.ai_sandbox import AISandbox
 from core_engine.security.ai_safeguard import AISafeguard
 from core_engine.security.ai_security import AISecurity
 from core_engine.learning.ai_fpl import AIFPL
+from core_engine.learning.ai_fractal_tracker import AIFractalTracker
 from core_engine.security.ai_safety import AISafety
 from core_engine.security.ai_validation import AIValidation
 from core_engine.security.ai_rollback import AIRollback
@@ -22,6 +23,7 @@ class SelfModifyingAI:
         """Initialize AI system with function tracking, self-improvement, and security layers."""
         self.file_path = file_path
         self.fpl = AIFPL(file_path)  # Fractal Propagation Learning
+        self.fractal_tracker = AIFractalTracker(file_path) # Tracks recursive learning layers
         self.reader = AIReader(file_path)
         self.modifier = AIModifier(file_path)
         self.analyzer = AIAnalyzer(file_path)
@@ -49,6 +51,11 @@ class SelfModifyingAI:
         # **NEW: Run Fractal Learning Expansion**
         logging.info("🚀 Running AI Fractal Learning Expansion...")
         self.fpl.analyze_and_expand()
+        
+        # Track function history and recursive depth
+        for function_name in function_report:
+            if self.fractal_tracker.can_expand(function_name):
+                self.fractal_tracker.log_expansion(function_name)
 
         # Retrieve function reflection data before modifying
         for function_name in function_report:

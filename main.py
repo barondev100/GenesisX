@@ -40,6 +40,11 @@ if __name__ == "__main__":
 
     logging.info("🔄 Running AI Fractal Learning Expansion...")
     ai.fpl.analyze_and_expand()  # NEW: Run fractal propagation learning
+    
+    logging.info("🔍 Tracking Recursive Learning Layers...")
+    function_report = ai.analyzer.analyze_code()
+    for function_name in function_report:
+        ai.fractal_tracker.log_expansion(function_name)
 
     logging.info("🔍 Analyzing AI source code for inefficiencies...")
     function_report = ai.analyzer.analyze_code()

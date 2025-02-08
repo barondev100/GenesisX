@@ -1,6 +1,7 @@
 import ast
 import logging
 from core_engine.modification.ai_modifier import AIModifier
+from core_engine.learning.ai_fractal_tracker import AIFractalTracker
 
 class AIFPL:
     """Implements Fractal Propagation Learning (FPL) for AI self-expansion."""
@@ -8,6 +9,7 @@ class AIFPL:
     def __init__(self, file_path):
         self.file_path = file_path
         self.modifier = AIModifier(file_path)
+        self.tracker = AIFractalTracker(file_path)
 
     def analyze_and_expand(self):
         """Analyzes AI's functions and applies fractal expansion logic."""
@@ -20,13 +22,11 @@ class AIFPL:
         logging.info(f"🔍 Identified {len(function_names)} functions for recursive expansion.")
 
         for function_name in function_names:
-            if function_name not in {"__init__", "run"}:  # Avoid modifying critical methods
+            if function_name not in {"__init__", "run"} and self.tracker.can_expand(function_name):
                 self.expand_function(function_name)
 
     def expand_function(self, function_name):
-        """Applies recursive modifications to a function, ensuring correct indentation."""
-        
-        # **Ensure proper indentation for new function expansion code**
+        """Applies recursive modifications to a function, ensuring controlled recursion."""
         fractal_code = (
             f"    print('🔄 Expanding function: {function_name}')\n"
             f"    return {function_name}()\n"
@@ -36,6 +36,8 @@ class AIFPL:
         success = self.modifier.modify_function(function_name, fractal_code)
 
         if success:
+            self.tracker.log_expansion(function_name)
             logging.info(f"✅ Successfully expanded '{function_name}'.")
         else:
             logging.error(f"❌ Expansion failed for '{function_name}'.")
+
