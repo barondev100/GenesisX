@@ -38,19 +38,20 @@ if __name__ == "__main__":
     # Initialize AI
     ai = SelfModifyingAI(ai_core_path)
 
-    logging.info("🔄 Running AI Fractal Learning Expansion...")
-    ai.fpl.analyze_and_expand()  # NEW: Run fractal propagation learning
-    
+    logging.info("🔄 Running AI Learning Cycle...")
+    ai.learning_manager.run_learning_cycle()  # ✅ FIXED: Use learning_manager instead of direct fpl call
+
     logging.info("🔍 Tracking Recursive Learning Layers...")
-    function_report = ai.analyzer.analyze_code()
+    function_report = ai.learning_manager.analyzer.analyze_code()
     for function_name in function_report:
-        ai.fractal_tracker.log_expansion(function_name)
+        ai.learning_manager.fractal_tracker.log_expansion(function_name)
+        ai.learning_manager.function_tracker.log_modification(function_name, "dummy_code")
 
     logging.info("🔍 Analyzing AI source code for inefficiencies...")
-    function_report = ai.analyzer.analyze_code()
+    function_report = ai.learning_manager.analyzer.analyze_code()
 
     logging.info("🛠 Applying AI self-optimizations...")
-    ai.optimizer.optimize_functions(function_report)
+    ai.learning_manager.optimizer.optimize_functions(function_report)
 
     logging.info("📜 Displaying updated AI source code...")
     ai.reader.display_code()
