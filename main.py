@@ -39,7 +39,7 @@ if __name__ == "__main__":
     ai = SelfModifyingAI(ai_core_path)
 
     logging.info("🔄 Running AI Learning Cycle...")
-    ai.learning_manager.run_learning_cycle()  # ✅ FIXED: Use learning_manager instead of direct fpl call
+    ai.learning_manager.run_learning_cycle()  # Runs Fractal Learning Expansion
 
     logging.info("🔍 Tracking Recursive Learning Layers...")
     function_report = ai.learning_manager.analyzer.analyze_code()
@@ -52,6 +52,10 @@ if __name__ == "__main__":
 
     logging.info("🛠 Applying AI self-optimizations...")
     ai.learning_manager.optimizer.optimize_functions(function_report)
+    
+    # **NEW: Run Recursive Function Rewriting**
+    logging.info("🔁 Running Recursive Function Rewriting...")
+    ai.function_rewriter.rewrite_and_adapt()  # ✅ Runs AI function rewriting
 
     logging.info("📜 Displaying updated AI source code...")
     ai.reader.display_code()
